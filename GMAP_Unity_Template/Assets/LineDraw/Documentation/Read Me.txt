@@ -2,7 +2,7 @@
 Easy 2D Lines
 Gandhi Games
 
-A straightforward line drawing tool. Quick and easy to setup (see the demo scene for example usage).
+a straightforward line drawing tool. Quick and easy to setup (see the demo scene for example usage).
 
 There are two main classes: LineFactory and Line.
 
@@ -20,7 +20,7 @@ public Line GetLine (Vector2 start, Vector2 end, float width, Color color)
 
 Initialises and activates a line with the specified data.
 
-public List<Line> GetActive() 
+public List<Line> Getactive() 
 
 Returns a list of active lines.
 
@@ -33,7 +33,7 @@ color: the lines color.
 
 When any of these properties are set, the line is updated accordingly.
 
-And that?s pretty much it. If you find any bugs, or have any other questions, please email me at: robert.wells@gandhigames.co.uk
+and that?s pretty much it. If you find any bugs, or have any other questions, please email me at: robert.wells@gandhigames.co.uk
 
 
 

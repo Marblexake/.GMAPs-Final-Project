@@ -34,21 +34,35 @@ public class Ball2D : MonoBehaviour {
 
     public bool isCollidingWith(float x, float y)
     {
+        //finds the difference between the pos
+        float differenceX = this.mPos.x - x;
+        float differenceY = this.mPos.y - y;
 
+        //checks the distance between mouse pos and ball pos.
+        float distance = Mathf.Sqrt(differenceX * differenceX + differenceY * differenceY);
+
+        //determines if mouse pos is within ball pos
+        if(distance <= this.mRadius)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool isCollidingWith(Ball2D other)
     {
-        //if distance between the centre point of the 2 balls
-        // <= to the radius added together
-
         //finds the difference, does the pythogoras theorem
         float differenceInX = this.mPos.x - other.mPos.x;
         float differenceInY = this.mPos.y - other.mPos.y;
+
         //math.pow does the power
         float distanceBetween2Balls =  Mathf.Sqrt(Mathf.Pow(differenceInX, 2) + Mathf.Pow(differenceInY, 2));
         float radiusAddedTogether = this.mRadius + other.mRadius;
 
+        //checks if any other balls have collided
         if(distanceBetween2Balls <= radiusAddedTogether)
         {
             return true;
@@ -60,7 +74,6 @@ public class Ball2D : MonoBehaviour {
         
     }
 
-    // Falls inside a hole
     public bool isInside(Hole2D hole)
     {
         //finds diff betw the x and y values
@@ -70,6 +83,7 @@ public class Ball2D : MonoBehaviour {
         //finds the distance/magnitude between ball and hole
         float distanceBetBallAndHole = Mathf.Sqrt(Mathf.Pow(differenceInX, 2) + Mathf.Pow(differenceInY, 2));
 
+        //checks if the ball pos is within the radius of the hole
         if (distanceBetBallAndHole <= hole.mRadius)
         {
             return true;
@@ -89,9 +103,9 @@ public class Ball2D : MonoBehaviour {
         mPos.x = transform.position.x;
         mPos.y = transform.position.y;
 
-		//-------------------------------------------
-		
-		
+        //-------------------------------------------
+
+        mVel = mVel * elapsed;
 		
 		
 		
@@ -116,7 +130,7 @@ public class Ball2D : MonoBehaviour {
         mPos.x = transform.position.x;
         mPos.y = transform.position.y;
 		//------------------------------------------------------
-    
+        
 	
 	
 	

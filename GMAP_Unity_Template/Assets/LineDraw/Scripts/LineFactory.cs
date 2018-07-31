@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Stores a pool of Line. Allows retrieval and initialisation of pooled line.
+/// Stores a pool of Line. allows retrieval and initialisation of pooled line.
 /// </summary>
 public class LineFactory : MonoBehaviour
 {

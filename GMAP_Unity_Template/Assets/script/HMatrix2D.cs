@@ -41,17 +41,48 @@ public class HMatrix2D {
 
     public static HMatrix2D operator +(HMatrix2D a, HMatrix2D b)
     {
+        HMatrix2D result = new HMatrix2D();
+
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                //adds the numbers on the corresponding positions on matrix a and b, then pushes it onto result
+                result.entries[row, col] = a.entries[row, col] + b.entries[row, col];
+            }
+        }
+        return result;
 
     }
 
     public static HMatrix2D operator -(HMatrix2D a, HMatrix2D b)
     {
+        HMatrix2D result = new HMatrix2D();
 
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                //subtracts the numbers on the corresponding positions on matrix a and b, then pushes it onto result
+                result.entries[row, col] = a.entries[row, col] - b.entries[row, col];
+            }
+        }
+        return result;
     }
 
     public static HMatrix2D operator *(HMatrix2D a, float b)
     {
+        HMatrix2D result = new HMatrix2D();
 
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                //multiplies matrix a and pushes the result onto the corresponding position on result
+                result.entries[row, col] = a.entries[row, col] * b;
+            }
+        }
+        return result;
     }
 
     public static HVector2D operator *(HMatrix2D a, HVector2D right)
@@ -62,7 +93,24 @@ public class HMatrix2D {
 
     public static HMatrix2D operator *(HMatrix2D a, HMatrix2D right)
     {
+        HMatrix2D result = new HMatrix2D();
 
+        //cycles thru the row of a
+        for(int a_row = 0; a_row < 3; a_row++)
+        {
+            //cycles thru the row of right
+            for(int right_col = 0; right_col < 3; right_col++)
+            {
+                float val = 0;
+                //cycles thru col of a and thru row of x
+                for(int i = 0; i < 3; i++)
+                {
+                    val += a.entries[a_row, i] * right.entries[i, right_col];
+                }
+                result.entries[a_row, right_col] = val;
+            }
+        }
+        return result;
     }
 
     public static bool operator ==(HMatrix2D a, HMatrix2D right)

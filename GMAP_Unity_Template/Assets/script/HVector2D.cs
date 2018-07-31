@@ -54,11 +54,12 @@ public class HVector2D {
 
     }
 
-
+    /*
     public float findAngle(HVector2D vec)
     {
 
     }
+    */
 
     public void print()
     {
