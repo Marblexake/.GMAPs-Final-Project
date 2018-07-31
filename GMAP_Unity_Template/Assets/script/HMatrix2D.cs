@@ -56,7 +56,8 @@ public class HMatrix2D {
 
     public static HVector2D operator *(HMatrix2D a, HVector2D right)
     {
-
+        return new HVector2D(a.entries[0, 0] * right.x + a.entries[0, 1] * right.y + a.entries[0, 2] * right.h,     //the X coordinate for new Vector
+                             a.entries[1, 0] * right.x + a.entries[1, 1] * right.y + a.entries[1, 2] * right.h);    //the Y coordinate for new Vector
     }
 
     public static HMatrix2D operator *(HMatrix2D a, HMatrix2D right)
@@ -66,12 +67,32 @@ public class HMatrix2D {
 
     public static bool operator ==(HMatrix2D a, HMatrix2D right)
     {
-
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                if (a.entries[row, col] != right.entries[row, col])
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static bool operator !=(HMatrix2D a, HMatrix2D right)
     {
-
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                if (a.entries[row, col] == right.entries[row, col])
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public override bool Equals(object obj)
