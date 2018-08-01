@@ -54,12 +54,12 @@ public class HVector2D {
 
     }
 
-    /*
+    
     public float findAngle(HVector2D vec)
     {
-
+        return Mathf.Atan2(vec.y, vec.x) - Mathf.Atan2(this.y, this.x);
     }
-    */
+    
 
     public void print()
     {
