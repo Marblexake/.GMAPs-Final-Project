@@ -142,12 +142,12 @@ public class HMatrix2D {
         }
         return false;
     }
-
+    /*
     public override bool Equals(object obj)
     {
 
     }
-
+    */
     public override int GetHashCode()
     {
         // Which is preferred?
@@ -157,7 +157,7 @@ public class HMatrix2D {
         //return this.FooId.GetHashCode();
     }
 
-
+/*
     public HMatrix2D transpose()
     {
 
@@ -167,7 +167,7 @@ public class HMatrix2D {
     {
         
     }
-
+    */
     public void setIdentity()
     {
         for (int row = 0; row < 3; row++)

@@ -104,17 +104,8 @@ public class Ball2D : MonoBehaviour {
         mPos.y = transform.position.y;
 
         //-------------------------------------------
-
         mVel = mVel * elapsed;
-		
-		
-		
-		
-		
-		
-		
-		
-		
+        mVel = mVel * 0.9f;		
 		
 		//-----------------------------------------------
         tempPos.x = mPos.x;

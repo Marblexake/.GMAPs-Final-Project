@@ -141,11 +141,6 @@ Transform:
   m_Father: {fileID: 1100109192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &13194395 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1445645467583394, guid: 4ca00439e447898439b0cd85d50a9989,
-    type: 2}
-  m_PrefabInternal: {fileID: 650022114}
 --- !u!4 &13194396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339710566316154, guid: 4ca00439e447898439b0cd85d50a9989,
@@ -222,11 +217,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ca00439e447898439b0cd85d50a9989, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &70143202 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1445645467583394, guid: 4ca00439e447898439b0cd85d50a9989,
-    type: 2}
-  m_PrefabInternal: {fileID: 412368447}
 --- !u!4 &70143203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339710566316154, guid: 4ca00439e447898439b0cd85d50a9989,
@@ -320,12 +310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dc9c6049b65f54eaab033793fd6a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRadius: 0
---- !u!1 &215597256 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1445645467583394, guid: 4ca00439e447898439b0cd85d50a9989,
-    type: 2}
-  m_PrefabInternal: {fileID: 62054428}
 --- !u!4 &215597257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339710566316154, guid: 4ca00439e447898439b0cd85d50a9989,
@@ -585,6 +569,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b32b9c4c789a1045adb81e9acba2da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mMass: 1
+  mNumBalls: 0
+  mRadius: 0
 --- !u!212 &386417641
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -805,12 +792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dc9c6049b65f54eaab033793fd6a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRadius: 0
---- !u!1 &570822543 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1445645467583394, guid: 4ca00439e447898439b0cd85d50a9989,
-    type: 2}
-  m_PrefabInternal: {fileID: 831306312}
 --- !u!4 &570822544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339710566316154, guid: 4ca00439e447898439b0cd85d50a9989,
@@ -933,11 +914,6 @@ Transform:
   m_Father: {fileID: 2059020507}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &646119873 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1445645467583394, guid: 4ca00439e447898439b0cd85d50a9989,
-    type: 2}
-  m_PrefabInternal: {fileID: 1607346147}
 --- !u!4 &646119874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339710566316154, guid: 4ca00439e447898439b0cd85d50a9989,
@@ -1102,7 +1078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dc9c6049b65f54eaab033793fd6a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRadius: 0
 --- !u!1001 &831306312
 Prefab:
   m_ObjectHideFlags: 0
@@ -1332,23 +1307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48694d1211c59ea47a70ed4a563b989f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  balls:
-  - {fileID: 646119873}
-  - {fileID: 1354505832}
-  - {fileID: 1121197002}
-  - {fileID: 13194395}
-  - {fileID: 70143202}
-  - {fileID: 570822543}
-  - {fileID: 215597256}
-  - {fileID: 2122269575}
-  - {fileID: 386417639}
-  holes:
-  - {fileID: 1952618609}
-  - {fileID: 1100109190}
-  - {fileID: 665843037}
-  - {fileID: 477097158}
-  - {fileID: 210188373}
-  - {fileID: 1768027985}
 --- !u!1 &1043572972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,12 +1423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dc9c6049b65f54eaab033793fd6a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRadius: 0
---- !u!1 &1121197002 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1445645467583394, guid: 4ca00439e447898439b0cd85d50a9989,
-    type: 2}
-  m_PrefabInternal: {fileID: 840444457}
 --- !u!4 &1121197003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339710566316154, guid: 4ca00439e447898439b0cd85d50a9989,
@@ -1503,8 +1455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f0bc8d15b6d0b4295cfb412e50a74a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineFactory: {fileID: 624260700}
-  drawnObject: {fileID: 386417639}
 --- !u!4 &1236656305
 Transform:
   m_ObjectHideFlags: 0
@@ -1593,11 +1543,6 @@ Transform:
   m_Father: {fileID: 2059020507}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1354505832 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1445645467583394, guid: 4ca00439e447898439b0cd85d50a9989,
-    type: 2}
-  m_PrefabInternal: {fileID: 1712494808}
 --- !u!4 &1354505833 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339710566316154, guid: 4ca00439e447898439b0cd85d50a9989,
@@ -1903,7 +1848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dc9c6049b65f54eaab033793fd6a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRadius: 0
 --- !u!1 &1814356998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,7 +2038,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03dc9c6049b65f54eaab033793fd6a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mRadius: 0
 --- !u!1 &2048655398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2161,11 +2104,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2122269575 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1445645467583394, guid: 4ca00439e447898439b0cd85d50a9989,
-    type: 2}
-  m_PrefabInternal: {fileID: 1698395626}
 --- !u!4 &2122269576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4339710566316154, guid: 4ca00439e447898439b0cd85d50a9989,
