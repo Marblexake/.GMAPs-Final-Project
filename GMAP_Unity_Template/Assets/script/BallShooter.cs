@@ -30,7 +30,7 @@ public class BallShooter : MonoBehaviour
             drawnLine.EnableDrawing(false);
             //update the vel of the white ball.
             HVector2D v = new HVector2D(drawnLine.start.x - drawnLine.end.x, drawnLine.start.y - drawnLine.end.y);
-            //v.normalize();
+            v.normalize();
 
             ball.mVel = v * 3.0f;
             drawnLine = null; // End line drawing

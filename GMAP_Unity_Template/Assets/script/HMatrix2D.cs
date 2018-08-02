@@ -113,6 +113,8 @@ public class HMatrix2D {
         return result;
     }
 
+
+    
     public static bool operator ==(HMatrix2D a, HMatrix2D right)
     {
         for (int row = 0; row < 3; row++)
@@ -134,7 +136,7 @@ public class HMatrix2D {
         {
             for (int col = 0; col < 3; col++)
             {
-                if (a.entries[row, col] == right.entries[row, col])
+                if (a.entries[row, col] != right.entries[row, col])
                 {
                     return true;
                 }
@@ -142,22 +144,9 @@ public class HMatrix2D {
         }
         return false;
     }
+
     /*
-    public override bool Equals(object obj)
-    {
 
-    }
-    */
-    public override int GetHashCode()
-    {
-        // Which is preferred?
-
-        return base.GetHashCode();
-
-        //return this.FooId.GetHashCode();
-    }
-
-/*
     public HMatrix2D transpose()
     {
 
@@ -185,7 +174,7 @@ public class HMatrix2D {
         entries[0, 2] = transX;
         entries[1, 2] = transY;
     }
-
+    /*
     public void setRotationMat(float rotDeg)
     {
 
@@ -195,5 +184,5 @@ public class HMatrix2D {
     {
 
     }
-
+    */
 }

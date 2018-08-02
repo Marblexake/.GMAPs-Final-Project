@@ -104,15 +104,22 @@ public class Ball2D : MonoBehaviour {
         mPos.y = transform.position.y;
 
         //-------------------------------------------
-        mVel = mVel * elapsed;
-        mVel = mVel * 0.9f;		
+        /*
+        HVector2D distance = new HVector2D(0, 0);
+
+        distance.x = mVel.x * elapsed;
+        distance.y = mVel.y * elapsed;
+        */
+
+        //HVector2D distance = new HVector2D(mVel.x * elapsed, mVel.y * elapsed);
+        mVel = mVel * GlobalVariable.PHYSICS_FRICTION;		
 		
 		//-----------------------------------------------
         tempPos.x = mPos.x;
         tempPos.y = mPos.y;
 
         transform.position = tempPos;
-        // transform.position = new Vector2(transform.position.x + mVel.x, transform.position.y + mVel.y);
+        transform.position = new Vector2(transform.position.x + mVel.x, transform.position.y + mVel.y);
         return true;
     }
 
