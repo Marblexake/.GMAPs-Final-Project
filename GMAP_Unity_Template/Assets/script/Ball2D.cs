@@ -104,14 +104,36 @@ public class Ball2D : MonoBehaviour {
         mPos.y = transform.position.y;
 
         //-------------------------------------------
-        /*
-        HVector2D distance = new HVector2D(0, 0);
 
-        distance.x = mVel.x * elapsed;
-        distance.y = mVel.y * elapsed;
-        */
+        //1) Aplying Friction
+        mVel.x = mVel.x * GlobalVariable.PHYSICS_FRICTION;
+        mVel.y = mVel.y * GlobalVariable.PHYSICS_FRICTION;
 
-        //HVector2D distance = new HVector2D(mVel.x * elapsed, mVel.y * elapsed);
+        //2) Finding the Distances
+        HVector2D distances = new HVector2D(mVel.x * elapsed, mVel.y * elapsed);
+
+        //3)Updating the distance (Try use matrix fro more marks)
+        HVector2D CurrentPosition = new HVector2D(mPos.x, mPos.y);
+        CurrentPosition = CurrentPosition + distances;
+
+        //-----------------------------------------------
+        tempPos.x = mPos.x;
+        tempPos.y = mPos.y;
+
+        transform.position = tempPos;
+        // transform.position = new Vector2(transform.position.x + mVel.x, transform.position.y + mVel.y);
+        return true;
+    }
+
+    /*
+    public bool updatePhysics(float elapsed)
+    {
+        // get the object position
+        mPos.x = transform.position.x;
+        mPos.y = transform.position.y;
+
+        //-------------------------------------------
+
         mVel = mVel * GlobalVariable.PHYSICS_FRICTION;		
 		
 		//-----------------------------------------------
@@ -122,7 +144,7 @@ public class Ball2D : MonoBehaviour {
         transform.position = new Vector2(transform.position.x + mVel.x, transform.position.y + mVel.y);
         return true;
     }
-
+    */
     void updateBoundaryCollision(float elapsed)
     {
         mPos.x = transform.position.x;
