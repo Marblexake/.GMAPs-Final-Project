@@ -173,13 +173,16 @@ public class HMatrix2D {
         setIdentity();
         entries[0, 2] = transX;
         entries[1, 2] = transY;
+
     }
     /*
+
     public void setRotationMat(float rotDeg)
     {
 
-    }
 
+
+    }
     public void setScalingMat(float scaleX, float scaleY)
     {
 

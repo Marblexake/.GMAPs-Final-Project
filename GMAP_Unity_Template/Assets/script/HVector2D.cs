@@ -54,7 +54,13 @@ public class HVector2D {
 
     }
 
-    
+    public static HVector2D operator -(HVector2D a, HVector2D right)
+    {
+        return new HVector2D(a.x - right.x, a.y - right.y);
+
+    }
+
+
     public float findAngle(HVector2D vec)
     {
         return Mathf.Atan2(vec.y, vec.x) - Mathf.Atan2(this.y, this.x);

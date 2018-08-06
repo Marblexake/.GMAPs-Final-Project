@@ -94,7 +94,25 @@ public class Table2D : MonoBehaviour {
 
     void handleBallColli(Ball2D ball1, Ball2D ball2, float elapsed)
     {
-    
+        /*
+        HVector2D difference = ball1.mPos - ball2.mPos;
+        //float differenceInY = ball1.mPos.y - ball2.mPos.y;
+
+        float distanceBetween2Balls = Mathf.Sqrt(Mathf.Pow(difference.x, 2) + Mathf.Pow(difference.y, 2));
+        float radiusAddedTogether = ball1.mRadius + ball2.mRadius;
+
+        //checks if any other balls have collided
+        if (distanceBetween2Balls <= radiusAddedTogether)
+        {
+            adjustBallsDist(ball1, ball2, )
+        }
+        else
+        {
+
+        }
+        */
+
+
     }
 
     // If 2 balls are overlapping by this time, move them back to when they just collided

@@ -97,6 +97,7 @@ public class Ball2D : MonoBehaviour {
         updatePhysics(Time.deltaTime);
     }
 
+
     public bool updatePhysics(float elapsed)
     {
         // get the object position
@@ -105,62 +106,47 @@ public class Ball2D : MonoBehaviour {
 
         //-------------------------------------------
 
-        //1) Aplying Friction
-        mVel.x = mVel.x * GlobalVariable.PHYSICS_FRICTION;
-        mVel.y = mVel.y * GlobalVariable.PHYSICS_FRICTION;
 
-        //2) Finding the Distances
-        HVector2D distances = new HVector2D(mVel.x * elapsed, mVel.y * elapsed);
+        HVector2D displacement = mVel * elapsed;
+        
+        HMatrix2D transMatrix = new HMatrix2D();
 
-        //3)Updating the distance (Try use matrix fro more marks)
-        HVector2D CurrentPosition = new HVector2D(mPos.x, mPos.y);
-        CurrentPosition = CurrentPosition + distances;
+        transMatrix.setTranslationMat(displacement.x, displacement.y);
 
-        //-----------------------------------------------
-        tempPos.x = mPos.x;
-        tempPos.y = mPos.y;
+        mPos = transMatrix * mPos;
 
-        transform.position = tempPos;
-        // transform.position = new Vector2(transform.position.x + mVel.x, transform.position.y + mVel.y);
-        return true;
-    }
+        mVel = mVel * GlobalVariable.PHYSICS_FRICTION;
 
-    /*
-    public bool updatePhysics(float elapsed)
-    {
-        // get the object position
-        mPos.x = transform.position.x;
-        mPos.y = transform.position.y;
 
-        //-------------------------------------------
-
-        mVel = mVel * GlobalVariable.PHYSICS_FRICTION;		
 		
 		//-----------------------------------------------
         tempPos.x = mPos.x;
         tempPos.y = mPos.y;
 
         transform.position = tempPos;
-        transform.position = new Vector2(transform.position.x + mVel.x, transform.position.y + mVel.y);
+        //transform.position = new Vector2(transform.position.x + mVel.x, transform.position.y + mVel.y);
         return true;
     }
-    */
+    
     void updateBoundaryCollision(float elapsed)
     {
         mPos.x = transform.position.x;
         mPos.y = transform.position.y;
 		//------------------------------------------------------
         
-	
-	
-	
-	
-	
+	    if(mPos.y <= GlobalVariable.BOARD_Y_POSITION + GlobalVariable.SHOULDER_WIDTH + GlobalVariable.BALL_SIZE/2 || mPos.y >= GlobalVariable.SCREEN_HEIGHT - GlobalVariable.SHOULDER_WIDTH - GlobalVariable.BALL_SIZE/2)
+        {
+            //reverse the velocity
+            mVel.y = mVel.y * -1;
+        }
 
-	
-	
-	
-		//--------------------------------------------------------
+	    if(mPos.x <= GlobalVariable.BOARD_X_POSITION + GlobalVariable.SHOULDER_WIDTH + GlobalVariable.BALL_SIZE/2 || mPos.x >= GlobalVariable.SCREEN_WIDTH - GlobalVariable.SHOULDER_WIDTH - GlobalVariable.BALL_SIZE / 2)
+        {
+            mVel.x = mVel.x * -1;
+        }
+
+
+        //--------------------------------------------------------
         tempPos.x = mPos.x;
         tempPos.y = mPos.y;
 
