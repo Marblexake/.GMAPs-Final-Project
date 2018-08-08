@@ -34,14 +34,14 @@ public class Ball2D : MonoBehaviour {
 
     public bool isCollidingWith(float x, float y)
     {
-        //finds the difference between the pos
+        //Finds the difference between the pos
         float differenceX = this.mPos.x - x;
         float differenceY = this.mPos.y - y;
 
-        //checks the distance between mouse pos and ball pos.
+        //Dhecks the distance between mouse pos and ball pos.
         float distance = Mathf.Sqrt(differenceX * differenceX + differenceY * differenceY);
 
-        //determines if mouse pos is within ball pos
+        //Determines if mouse pos is within ball pos
         if(distance <= this.mRadius)
         {
             return true;
@@ -54,15 +54,15 @@ public class Ball2D : MonoBehaviour {
 
     public bool isCollidingWith(Ball2D other)
     {
-        //finds the difference, does the pythogoras theorem
+        //Finds the difference
         float differenceInX = this.mPos.x - other.mPos.x;
         float differenceInY = this.mPos.y - other.mPos.y;
 
-        //math.pow does the power
+        //Finds the distance and the combined radius of the two balls
         float distanceBetween2Balls =  Mathf.Sqrt(Mathf.Pow(differenceInX, 2) + Mathf.Pow(differenceInY, 2));
         float radiusAddedTogether = this.mRadius + other.mRadius;
 
-        //checks if any other balls have collided
+        //Checks if any other balls have collided
         if(distanceBetween2Balls <= radiusAddedTogether)
         {
             return true;
@@ -76,14 +76,14 @@ public class Ball2D : MonoBehaviour {
 
     public bool isInside(Hole2D hole)
     {
-        //finds diff betw the x and y values
+        //Finds difference between the x and y values
         float differenceInX = this.mPos.x - hole.mPos.x;
         float differenceInY = this.mPos.y - hole.mPos.y;
 
-        //finds the distance/magnitude between ball and hole
+        //Finds the distance/magnitude between ball and hole
         float distanceBetBallAndHole = Mathf.Sqrt(Mathf.Pow(differenceInX, 2) + Mathf.Pow(differenceInY, 2));
 
-        //checks if the ball pos is within the radius of the hole
+        //Checks if the ball pos is within the radius of the hole
         if (distanceBetBallAndHole <= hole.mRadius)
         {
             return true;
@@ -106,19 +106,21 @@ public class Ball2D : MonoBehaviour {
 
         //-------------------------------------------
 
-
+        //Stores the displacement in a vector
         HVector2D displacement = mVel * elapsed;
-        
+
+        //Creates a new Matrix 
         HMatrix2D transMatrix = new HMatrix2D();
 
+        //Set the translation matrix with displacement values
         transMatrix.setTranslationMat(displacement.x, displacement.y);
 
+        //Updates original vector pos with translation matrix
         mPos = transMatrix * mPos;
 
+        //Adds friction physics to the Velocity, so the ball slows down.
         mVel = mVel * GlobalVariable.PHYSICS_FRICTION;
 
-
-		
 		//-----------------------------------------------
         tempPos.x = mPos.x;
         tempPos.y = mPos.y;
@@ -134,14 +136,17 @@ public class Ball2D : MonoBehaviour {
         mPos.y = transform.position.y;
 		//------------------------------------------------------
         
+        //Makes sure ball does not go out of the specified boundary of the Y-coordinates
 	    if(mPos.y <= GlobalVariable.BOARD_Y_POSITION + GlobalVariable.SHOULDER_WIDTH + GlobalVariable.BALL_SIZE/2 || mPos.y >= GlobalVariable.SCREEN_HEIGHT - GlobalVariable.SHOULDER_WIDTH - GlobalVariable.BALL_SIZE/2)
         {
-            //reverse the velocity
+            //Reverse the velocity on the Vertical component
             mVel.y = mVel.y * -1;
         }
 
+        //Makes sure ball does not go out of the specified boundary of X-coordinates
 	    if(mPos.x <= GlobalVariable.BOARD_X_POSITION + GlobalVariable.SHOULDER_WIDTH + GlobalVariable.BALL_SIZE/2 || mPos.x >= GlobalVariable.SCREEN_WIDTH - GlobalVariable.SHOULDER_WIDTH - GlobalVariable.BALL_SIZE / 2)
         {
+            //Reverse the velocity on the Horizontal component
             mVel.x = mVel.x * -1;
         }
 

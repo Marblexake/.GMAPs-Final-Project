@@ -47,7 +47,7 @@ public class HMatrix2D {
         {
             for (int col = 0; col < 3; col++)
             {
-                //adds the numbers on the corresponding positions on matrix a and b, then pushes it onto result
+                //Adds the numbers on the corresponding positions on matrix a and b, then pushes it onto result
                 result.entries[row, col] = a.entries[row, col] + b.entries[row, col];
             }
         }
@@ -63,7 +63,8 @@ public class HMatrix2D {
         {
             for (int col = 0; col < 3; col++)
             {
-                //subtracts the numbers on the corresponding positions on matrix a and b, then pushes it onto result
+                //Subtracts the numbers on the corresponding positions on matrix a and b, 
+                //then pushes it onto result
                 result.entries[row, col] = a.entries[row, col] - b.entries[row, col];
             }
         }
@@ -78,7 +79,8 @@ public class HMatrix2D {
         {
             for (int col = 0; col < 3; col++)
             {
-                //multiplies matrix a and pushes the result onto the corresponding position on result
+                //Multiplies matrix a with scalar b 
+                //and pushes the result onto the corresponding position on result
                 result.entries[row, col] = a.entries[row, col] * b;
             }
         }
@@ -87,6 +89,7 @@ public class HMatrix2D {
 
     public static HVector2D operator *(HMatrix2D a, HVector2D right)
     {
+        //Multiplies the two Vectors together and return a Vector (two values only, since H is alrdy defined as 1)
         return new HVector2D(a.entries[0, 0] * right.x + a.entries[0, 1] * right.y + a.entries[0, 2] * right.h,     //the X coordinate for new Vector
                              a.entries[1, 0] * right.x + a.entries[1, 1] * right.y + a.entries[1, 2] * right.h);    //the Y coordinate for new Vector
     }
@@ -95,14 +98,14 @@ public class HMatrix2D {
     {
         HMatrix2D result = new HMatrix2D();
 
-        //cycles thru the row of a
+        //Cycles thru the row of Matrix a
         for(int a_row = 0; a_row < 3; a_row++)
         {
-            //cycles thru the row of right
+            //cycles thru the row of Matrix right 
             for(int right_col = 0; right_col < 3; right_col++)
             {
                 float val = 0;
-                //cycles thru col of a and thru row of x
+                //Cycles thru col of matrix a and thru row of matrix right
                 for(int i = 0; i < 3; i++)
                 {
                     val += a.entries[a_row, i] * right.entries[i, right_col];
@@ -121,6 +124,7 @@ public class HMatrix2D {
         {
             for (int col = 0; col < 3; col++)
             {
+                //Checks if the value in the corresponding position is not the same
                 if (a.entries[row, col] != right.entries[row, col])
                 {
                     return false;
@@ -136,6 +140,7 @@ public class HMatrix2D {
         {
             for (int col = 0; col < 3; col++)
             {
+                //Checks if the value in the corresponding position is not the same
                 if (a.entries[row, col] != right.entries[row, col])
                 {
                     return true;
@@ -145,18 +150,25 @@ public class HMatrix2D {
         return false;
     }
 
-    /*
+    
 
     public HMatrix2D transpose()
     {
-
+        //Flips the Matrix
+        HMatrix2D transpose = new HMatrix2D(entries[0, 0], entries[1, 0], entries[2, 0],
+                                          entries[0, 1], entries[1, 1], entries[2, 1],
+                                          entries[0, 2], entries[1, 2], entries[2, 2]);
+        return transpose;
     }
 
     public float getDeterminant()
     {
-        
+        //Just the determinant equation but in code form
+        float determinent = (entries[0, 0] * entries[1, 1] * entries[2, 2] + entries[0, 1] * entries[1, 2] * entries[2, 0] + entries[0, 2] * entries[1, 0] * entries[2, 1]
+                           - (entries[0, 0] * entries[1, 2] * entries[2, 1] - entries[0, 1] * entries[1, 0] * entries[2, 2] - entries[0, 2] * entries[1, 1] * entries[2, 0]));
+        return determinent;
     }
-    */
+
     public void setIdentity()
     {
         for (int row = 0; row < 3; row++)
@@ -170,22 +182,31 @@ public class HMatrix2D {
 
     public void setTranslationMat(float transX, float transY)
     {
+        //Makes sure the Matrix is an identity matrix then fills the positions with the values from parameters
         setIdentity();
         entries[0, 2] = transX;
         entries[1, 2] = transY;
 
     }
-    /*
+    
 
     public void setRotationMat(float rotDeg)
     {
-
+        //Makes sure the Matrix is an identity matrix before adding the rotation values in the specific position
+        setIdentity();
+        entries[0, 0] = Mathf.Cos(rotDeg);
+        entries[0, 1] = -Mathf.Sin(rotDeg);
+        entries[1, 0] = Mathf.Sin(rotDeg);
+        entries[1, 1] = Mathf.Cos(rotDeg);
 
 
     }
     public void setScalingMat(float scaleX, float scaleY)
     {
-
+        //Makes sure the Matrix is an identity matrix then creates the Matrix with scale values
+        setIdentity();
+        entries[0, 0] = scaleX;
+        entries[1, 1] = scaleY;
     }
-    */
+    
 }
